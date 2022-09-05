@@ -1,0 +1,14 @@
+h1 {
+    color: chartreuse;
+    font-size: 45px;
+}
+.body {
+    background-image:url("bg1.jpg");
+    background-size:cover;
+}
+span {
+    font-weight: bold;
+}
+button {
+    font-weight: bold;
+}
