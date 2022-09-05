@@ -1,8 +1,8 @@
 var mouseEvent="empty";
-var last_position_of_x,last_position_of_y;
+var last_position_of_x, last_position_of_y;
 
 canvas=document.getElementById("myCanvas");
-ctx= canvas.getContext("2d");
+ctx=canvas.getContext("2d");
 
 canvas.addEventListener("mousedown",my_mousedown);
 function my_mousedown(e){
@@ -12,17 +12,7 @@ function my_mousedown(e){
     mouseEvent="mousedown";
 }
 
-canvas.addEventListener("mouseUp",my_mouseUp);
-    function my_mouseUp(e){
-        mouseEvent="mouseUp";
-}
-
-canvas.addEventListener("mouseleave",my_mouseleave);
-    function my_mouseleave(e){
-        mouseEvent="mouseleave";
-    }
-
-    canvas.addEventListener("mousemove",my_mousemove);
+canvas.addEventListener("mousemove",my_mousemove);
 function my_mousemove(e){
     current_position_of_mouse_x=e.clientX-canvas.offsetLeft;
     current_position_of_mouse_y=e.clientY-canvas.offsetTop;
@@ -31,21 +21,30 @@ function my_mousemove(e){
         ctx.beginPath();
         ctx.strokeStyle=color;
         ctx.lineWidth=width_of_line;
-    
-    console.log("last position of x and y coordinates is");
-    console.log("x="+last_position_of_x+",Y="+last_position_of_y);
-    ctx.moveTo(last_position_of_x,last_position_of_y);
-    
+
     console.log("current position of x and y coordinates is");
     console.log("X="+current_position_of_mouse_x+",Y="+current_position_of_mouse_y);
-    ctx.lineTo(current_position_of_mouse_x,current_position_of_mouse_y);
+    ctx.arc(current_position_of_mouse_x,current_position_of_mouse_y,radius,0,2*Math.PI);
     ctx.stroke();
     }
     last_position_of_x=current_position_of_mouse_x;
     last_position_of_y=current_position_of_mouse_y;
 }
 
-function cleararea(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-}
 
+canvas.addEventListener("mouseUp",my_mouseUp);
+    function my_mouseUp(e){
+        mouseEvent="mouseUp";
+
+    }
+
+    canvas.addEventListener("mouseleave",my_mouseleave);
+    function my_mouseleave(e){
+        mouseEvent="mouseleave";
+
+    }
+
+    function cleararea(){
+        ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+        
+    }
